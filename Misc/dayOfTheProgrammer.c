@@ -18,7 +18,7 @@ int getDecimal(int value, int tensPower) {
  * where I may not always be operating on the least significant digit (10^1 in the case of how this function works instead of 10^0)
  */
 int removeDecimal(int value, int tensPower) {
-    int power = (int) pow(10, tensPower)
+    int power = (int) pow(10, tensPower);
     int difference = value - (value % power);
     return difference / power;
 }
