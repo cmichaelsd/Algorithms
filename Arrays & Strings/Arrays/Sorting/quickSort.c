@@ -3,11 +3,11 @@
 /**
  * O(n)
  */
-void printArray(int arr[], int arr_count) {
-    for (int i = 0; i < arr_count; ++i) {
-        printf("%d\n", arr[i]);
-    }
-}
+// void printArray(int arr[], int arr_count) {
+//     for (int i = 0; i < arr_count; ++i) {
+//         printf("%d\n", arr[i]);
+//     }
+// }
 
 /**
  * O(1)
