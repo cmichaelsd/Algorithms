@@ -1,5 +1,28 @@
+#include "../Arrays/Sorting/quickSort.h"
 #include <stdio.h>
 #include <string.h>
+
+/**
+ * O(n)
+ */
+int isDuplicateInSortedArray(int* arr, int arr_count) {
+    for (int i = 1; i < arr_count; ++i) {
+        if (arr[i-1] == arr[i]) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+/**
+ * O(n)
+ */
+void charToIntArray(char* s, int s_count, int* arr) {
+    for (int i = 0; i < s_count; ++i) {
+        arr[i] = s[i];
+    }
+}
 
 /**
  * O(n)
@@ -12,15 +35,19 @@ int getSize(char* s) {
 }
 
 /**
- * O()
+ * O(n * log(n))
  * I use ++i instead of i++ because the former increments the pointer to the value, where the latter creates a new variable and reassigns
  * 
  * I could sort the array since characters are integers and then see if the current is equal to the previous
  */
-int isUnqiue(char* s, int s_count) {
-    for (int i = 0; i < s_count; ++i) {
+int isUnqiue(char* s) {
+    int s_count = getSize(s);
+    int arr[s_count];
 
-    }
+    charToIntArray(s, s_count, arr);
+    quickSort(arr, 0, s_count - 1);
+
+    return isDuplicateInSortedArray(arr, s_count);
 }
 
 /**
@@ -28,7 +55,6 @@ int isUnqiue(char* s, int s_count) {
  * What if you cannot use additional data structures?
  */
 int main() {
-    char* s = "Asdfghjkl";
-    int s_count = getSize(s);
-    printf("%d", isUnqiue(s, s_count));
+    char* s = "fghjklAAsd";
+    printf("%d", isUnqiue(s));
 }
