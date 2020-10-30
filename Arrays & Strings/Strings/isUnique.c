@@ -5,19 +5,6 @@
 /**
  * O(n)
  */
-int isDuplicateInSortedArray(int* arr, int arr_count) {
-    for (int i = 1; i < arr_count; ++i) {
-        if (arr[i-1] == arr[i]) {
-            return 1;
-        }
-    }
-
-    return 0;
-}
-
-/**
- * O(n)
- */
 void charToIntArray(char* s, int s_count, int* arr) {
     for (int i = 0; i < s_count; ++i) {
         arr[i] = s[i];
@@ -47,7 +34,13 @@ int isUnqiue(char* s) {
     charToIntArray(s, s_count, arr);
     quickSort(arr, 0, s_count - 1);
 
-    return isDuplicateInSortedArray(arr, s_count);
+    for (int i = 1; i < s_count; ++i) {
+        if (arr[i-1] == arr[i]) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 /**
