@@ -1,3 +1,4 @@
+#include "quickSort.h"
 #include <stdio.h>
 
 /**
@@ -26,7 +27,6 @@ int partition(int arr[], int low, int high) {
     int pivot = arr[high];
     int i = low - 1;
 
-    printf("Hit\n");
     for (int j = low; j < high; ++j) {
         /**
          * Could improve by adding a condition 
