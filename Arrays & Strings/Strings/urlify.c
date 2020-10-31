@@ -1,29 +1,6 @@
 #include <stdio.h>
 
 /**
- * O(c)
- */
-void swap(char* a, char* b) {
-    char temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-/**
- * O(i * n)
- * n = end - start
- * i = iterations
- */
-void shiftLeft(char s[], int start, int end, int iterations) {
-    while (iterations > 0) {
-        for (int i = end; i > start; --i) {
-            swap(&s[i-1], &s[i]);
-        }   
-        --iterations;
-    }
-}
-
-/**
  * O(n)
  */
 int count(char s[], int s_count, char value) {
@@ -39,45 +16,52 @@ int count(char s[], int s_count, char value) {
 }
 
 /**
- * O(s * w(2 * n))
- * n = (Length of string + (Number of spaces * 2)) - Location of white space
- * s = "Actual" length of string, Counting spaces
- * w = Number of whitespace
+ * O(n)
+ * n = Length of string
  */
 void urlify(char s[], int s_count) {
     int spaces = count(s, s_count, ' ');
-    int total = s_count + (spaces * 2) - 1;
+    int total = s_count + (spaces * 2);
 
     /**
      * Working back from string size
      */
-    for (int i = s_count; i >= 0; --i) {
+    for (int i = s_count - 1; i >= 0; --i) {
         /**
-         * If I hit a space
+         * If a space is count
          */
         if (s[i] == ' ') {
             /**
-             * Set space to be %
+             * Set last three indices to %, 2, 0
+             * Subtract 3 from total
              */
-            s[i] = '%';
-
+            s[total-1] = '0';
+            s[total-2] = '2';
+            s[total-3] = '%';
+            total -= 3;
+        } else {
             /**
-             * Set last two element to be 2, 0
+             * Otherwise
+             * Overwrite end of the string with current character
              */
-            s[total - 1] = '0';
-            s[total - 2] = '2';
-
-            /**
-             * Exclusive from space
-             * shiftLeft 2 iterations
-             */
-            shiftLeft(s, i + 1, total, 2);
+            s[total-1] = s[i];
+            --total;
         }
     }
-
-    printf("%s", s);
 }
 
+
+
+/**
+ * Array      size  total   i
+ * cat_tom__  7     9       6
+ * cat_tom_m  7     8       5
+ * cat_tomom  7     7       4
+ * cat%20tom  7     6       3
+ * cat%20tom  7     3       2 => From here on out [total-1] == i, characters overwrite themselves
+ * cat%20tom  7     2       1
+ * cat%20tom  7     1       0
+ */
 int main() {
     char s[] = "Mr John Smith    ";
     int size = 13;
