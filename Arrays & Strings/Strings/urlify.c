@@ -40,7 +40,7 @@ int count(char s[], int s_count, char value) {
 
 /**
  * O(s * w(2 * n))
- * n = (Length of string * Number of spaces) - Location of white space
+ * n = (Length of string + (Number of spaces * 2)) - Location of white space
  * s = "Actual" length of string, Counting spaces
  * w = Number of whitespace
  */
