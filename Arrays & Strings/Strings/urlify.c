@@ -28,7 +28,7 @@ void urlify(char s[], int s_count) {
      */
     for (int i = s_count - 1; i >= 0; --i) {
         /**
-         * If a space is count
+         * If element is a space
          */
         if (s[i] == ' ') {
             /**
