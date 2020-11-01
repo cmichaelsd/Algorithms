@@ -53,10 +53,3 @@ void sleepSort(int arr[], int arr_count) {
         wait(NULL);
     }
 }
-
-int main() {
-    int arr[] = {2,5,8,3,10};
-    int arr_count = sizeof(arr) / sizeof(int);
-    sleepSort(arr, arr_count);
-    return 0;
-}
