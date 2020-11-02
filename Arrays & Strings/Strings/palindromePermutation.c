@@ -81,6 +81,12 @@ void buildFrequencyArray(int dest[], char s[], int s_count) {
     }
 }
 
+/**
+ * O(n)
+ * The input will never change the runtime for the frequency array its O(c)
+ * 
+ * n = Length of the string
+ */
 int palindromePermutation(char s[], int s_count) {
     int frequency[ASCII_CHAR_TOTAL];
     int trueSize = 0;
