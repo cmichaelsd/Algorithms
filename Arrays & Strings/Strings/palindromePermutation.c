@@ -67,18 +67,8 @@ void buildFrequencyArray(int dest[], char s[], int s_count) {
  */
 int palindromePermutation(char s[], int s_count) {
     int frequency[ASCII_CHAR_TOTAL];
-    int trueSize = 0;
     fill(frequency, ASCII_CHAR_TOTAL, 0);
     buildFrequencyArray(frequency, s, s_count);
-
-    /**
-     * Find true length of the string (no control codes)
-     */
-    for (int i = 0; i < s_count; ++i) {
-        if ((int) s[i] >= 32) {
-            ++trueSize;
-        }
-    }
     
     int oddFrequencies = count(frequency, ASCII_CHAR_TOTAL, &isOdd);
     
