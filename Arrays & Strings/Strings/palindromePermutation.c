@@ -12,13 +12,6 @@ int isOdd(int n) {
 }
 
 /**
- * O(c)
- */
-int isEven(int n) {
-    return n % 2 == 0;
-}
-
-/**
  * O(n)
  */
 int count(int arr[], int arr_count, int (*ptr)()) {
@@ -31,21 +24,6 @@ int count(int arr[], int arr_count, int (*ptr)()) {
     }
 
     return total;
-}
-
-/**
- * O(n)
- * Decided to update the every function to take a callback
- * I can now dynamically check conditions
- */
-int every(int arr[], int arr_count, int (*ptr)()) {
-    for (int i = 0; i < arr_count; ++i) {
-        if ((*ptr)(arr[i]) == 0) {
-            return 0;
-        }
-    }
-
-    return 1;
 }
 
 /**
@@ -102,40 +80,29 @@ int palindromePermutation(char s[], int s_count) {
         }
     }
     
-    if (isOdd(trueSize - 1)) {
-        int oddFrequencies = count(frequency, ASCII_CHAR_TOTAL, &isOdd);
-        
-        /**
-         * You cannot have an odd lengthed string which has multiple
-         * odd frequencies and is also a palindrome
-         * 
-         * efefefe (one odd frequency) -> true
-         * efefefb (two odd frequencies) -> false
-         * tacocat (one odd frequency) -> true
-         * abcdefg (seven odd frequencies) -> false
-         */
-        if (oddFrequencies > 1) {
-            return 0;
-        }
-    } else {
-        int allElementsEven = every(frequency, ASCII_CHAR_TOTAL, &isEven);
-
-        if (allElementsEven == 0) {
-            return 0;
-        }
+    int oddFrequencies = count(frequency, ASCII_CHAR_TOTAL, &isOdd);
+    
+    /**
+     * You cannot have an odd lengthed string which has multiple
+     * odd frequencies and is also a palindrome
+     * 
+     * efefefe (one odd frequency) -> true
+     * efefefb (two odd frequencies) -> false
+     * tacocat (one odd frequency) -> true
+     * abcdefg (seven odd frequencies) -> false
+     */
+    if (oddFrequencies > 1) {
+        return 0;
     }
 
     return 1;
 }
 
-int test(char s[], int s_count) {
-    int checker = 0;
-
-    for (int i = 0; i < s_count; ++i) {
-
-    }
-}
-
+/**
+ * Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase
+ * that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be
+ * limited to just dictionary words.
+ */
 int main() {
     char s[] = "tacotaco";
     int s_count = sizeof(s) / sizeof(char);
