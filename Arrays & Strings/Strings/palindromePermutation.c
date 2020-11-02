@@ -2,12 +2,6 @@
 
 const int ASCII_CHAR_TOTAL = 256;
 
-void printArray(int arr[], int arr_count) {
-    for (int i = 0; i < arr_count; ++i) {
-        printf("%d\n", arr[i]);
-    }
-}
-
 /**
  * O(c)
  * I could just say isEven(n) == 1
