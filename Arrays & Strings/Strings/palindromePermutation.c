@@ -4,7 +4,7 @@ const int ASCII_CHAR_TOTAL = 256;
 
 /**
  * O(c)
- * I could just say isEven(n) == 1
+ * I could just say isEven(n) == 0
  * but I'm trying to be more readable
  */
 int isOdd(int n) {
