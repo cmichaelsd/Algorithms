@@ -64,9 +64,9 @@ void buildFrequencyArray(int dest[], char s[], int s_count) {
     for (int i = 0; i < s_count; ++i) {
 
         /**
-         * Ignore control codes and spaces
+         * Ignore control codes
          */
-        if ((int) s[i] > 32 && (int) s[i] != 173) {
+        if ((int) s[i] > 32) {
 
             /**
              * Ignore capitalization
@@ -94,10 +94,10 @@ int palindromePermutation(char s[], int s_count) {
     buildFrequencyArray(frequency, s, s_count);
 
     /**
-     * Find true length of the string (no control or space characters)
+     * Find true length of the string (no control codes)
      */
     for (int i = 0; i < s_count; ++i) {
-        if ((int) s[i] >= 32 && (int) s[i] != 173) {
+        if ((int) s[i] >= 32) {
             ++trueSize;
         }
     }
@@ -126,6 +126,14 @@ int palindromePermutation(char s[], int s_count) {
     }
 
     return 1;
+}
+
+int test(char s[], int s_count) {
+    int checker = 0;
+
+    for (int i = 0; i < s_count; ++i) {
+
+    }
 }
 
 int main() {
