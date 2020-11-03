@@ -39,7 +39,7 @@ int toggle(int bitVector, int index) {
     if (index < 0) return bitVector;
 
     /**
-     * This mask if what send a one down the series until it is at the index which is the character code
+     * This mask is what is sending a one down the series until it is at the index which is the character code
      */
     int mask = 1 << index;
 
