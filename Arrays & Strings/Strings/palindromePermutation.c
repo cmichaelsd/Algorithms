@@ -6,9 +6,9 @@
  * This function is to find if our series of bits only contain a single one.
  * Theres a trick for this lets say I have 8
  * 0000 1000 -> 8 (2^3)
- * 0000 0111 -> 7 (2^2 + 2^1 + 2^0) or (4 + 2 + 1)
+ * 0000 0111 -> 7 (2^2 + 2^1 + 2^0) or (4 + 2 + 1) subtract our current bit vector by 1
  * 
- * The valuesof the binary numbers aren't important, just pretend its an array of ones and zeros (which could be seen as a number if you really wanted to)
+ * The values of the binary numbers aren't important, just pretend its an array of ones and zeros (which could be seen as a number if you really wanted to)
  * 
  *   0000 1000
  *  &0000 0111
