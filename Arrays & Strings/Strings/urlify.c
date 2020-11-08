@@ -1,19 +1,5 @@
 #include <stdio.h>
-
-/**
- * O(n)
- */
-int count(char s[], int s_count, char value) {
-    int count = 0;
-    
-    for (int i = 0; i < s_count; ++i) {
-        if (s[i] == value) {
-            ++count;
-        }
-    }
-
-    return count;
-}
+#include "helpers.h"
 
 /**
  * O(n)
@@ -49,8 +35,6 @@ void urlify(char s[], int s_count) {
         }
     }
 }
-
-
 
 /**
  * Array      size  total   i

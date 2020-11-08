@@ -32,16 +32,7 @@ int main() {
 
 // BELOW: Frequency implementation
 
-// const int ASCII_CHAR_TOTAL = 256;
-
-// /**
-//  * O(n)
-//  */
-// void fill(int arr[], int arr_count, int value) {
-//     for (int i = 0; i < arr_count; ++i) {
-//         arr[i] = value;
-//     }
-// }
+// #include "helpers.h"
 
 // /**
 //  * Method 1)
@@ -56,8 +47,8 @@ int main() {
 //  */
 // int isUnqiue(char* s) {
 //     /* On the ASCII website they claim the range is from 0-127 for character codes, 255 for extended charcter codes */
-//     int arr[ASCII_CHAR_TOTAL];
-//     fill(arr, ASCII_CHAR_TOTAL, 0);
+//     int arr[ASCI_CHAR_EXTENDED];
+//     fill(arr, ASCI_CHAR_EXTENDED, 0);
 
 //     for (int i = 0; i < strlen(s); ++i) {
 //         int charIndex = s[i];

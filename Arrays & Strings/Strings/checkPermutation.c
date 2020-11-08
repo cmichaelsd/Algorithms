@@ -1,28 +1,5 @@
 #include <stdio.h>
-
-const int ASCII_CHAR_TOTAL = 256;
-
-/**
- * O(n)
- */
-void fill(int arr[], int arr_count, int value) {
-    for (int i = 0; i < arr_count; ++i) {
-        arr[i] = value;
-    }
-}
-
-/**
- * O(n)
- */
-int every(int arr[], int arr_count, int value) {
-    for (int i = 0; i < arr_count; ++i) {
-        if (arr[i] != value) {
-            return 0;
-        }
-    }
-
-    return 1;
-}
+#include "helpers.h"
 
 /**
  * O(n)
@@ -34,15 +11,15 @@ int every(int arr[], int arr_count, int value) {
  * If at the end of this process the Hash Table has 0 for very index the strings are permutations of each other
  */
 int checkPermutation(char s1[], char s2[], int size) {
-    int arr[ASCII_CHAR_TOTAL];
-    fill(arr, ASCII_CHAR_TOTAL, 0);
+    int arr[ASCI_CHAR_EXTENDED];
+    fill(arr, ASCI_CHAR_EXTENDED, 0);
 
     for (int i = 0; i < size; ++i) {
         ++arr[s1[i]];
         --arr[s2[i]];
     }
 
-    return every(arr, ASCII_CHAR_TOTAL, 0);
+    return every(arr, ASCI_CHAR_EXTENDED, 0);
 }
 
 /**
