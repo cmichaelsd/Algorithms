@@ -1,64 +1,71 @@
 #include <stdio.h>
+#include "helpers.h"
 
-const int ASCII_CHAR_TOTAL = 256;
-
-void fill(int arr[], int arr_count, int value) {
-    for (int i = 0; i < arr_count; ++i) {
-        arr[i] = value;
+/**
+ * O(n)
+ */
+int oneAwayReplace(char s1[], char s2[], int count) {
+    int sum = 0;
+    for (int i = 0; i < count; ++i) {
+        if (s1[i] != s2[i]) {
+            ++sum;
+        }
+        if (sum > 1) {
+            return 0;
+        }
     }
+
+    return 1;
 }
 
 /**
- * O(a + b)
- * a = Length of string one
- * b = Length of string two
+ * O(n)
+ */
+int oneAwayInsert(char longer[], char shorter[], int shorter_count) {
+    int sum = 0;
+    for (int i = 0; i < shorter_count; ++i) {
+        // popopop
+        // opopop  -> true insert at index 0
+        // pples
+        // apples
+        if ((shorter[i] != longer[i]) && (shorter[i] == longer[i+1])) {
+            ++sum;
+        }
+        if (sum > 1) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+/**
+ * O(n)
+ * n = Length of both string beign equal || Length of shortest
+ * 
  */
 int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
     /**
-     * int frequency[ascii]
-     * 
-     * for (i = 0; i < s1_count; ++i)
-     *  ++frequency[s1[i]]
-     * 
-     * for (i = 0; i < s2_count; ++i)
-     *  --frequency[s2[i]]
-     * 
-     * count = 0;
-     * for (i = 0; i < ascii; ++i)
-     *  if (frequency[i] != 0)
-     *    ++count
-     * 
-     * return count == 1 || count == 0
+     * Operate depending on string length
+     * If equal must be a character or none apart
+     * If lengths different must be an insert apart
      */
-    int count = 0;
-    int frequency[ASCII_CHAR_TOTAL];
-    fill(frequency, ASCII_CHAR_TOTAL, 0);
-
-    for (int i = 0; i < s1_count; ++i) {
-        ++frequency[s1[i]];
+    if (s1_count == s2_count) {
+        return oneAwayReplace(s1, s2, s1_count);
     }
 
-    for (int i = 0; i < s2_count; ++i) {
-        --frequency[s2[i]];
+    if (s1_count - 1 == s2_count) {
+        return oneAwayInsert(s1, s2, s2_count);
     }
 
-    for (int i = 0; i < s1_count; ++i) {
-        if (frequency[s1[i]] != 0) {
-            --frequency[s1[i]];
-        }
+    if (s1_count == s2_count - 1) {
+        return oneAwayInsert(s2, s1, s1_count);
     }
 
-    for (int i = 0; i < ASCII_CHAR_TOTAL; ++i) {
-        if (frequency[i] != 0) {
-            ++count;
-        }
-    }
-
-    printf("%d\n", count);
-
-    // return count == 1 || count == 0;
+    /**
+     * Base case if all false
+     */
     return 0;
-
 }
 
 /**
@@ -68,8 +75,8 @@ int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
  * (or zero edits) away.
  */
 int main() {
-    char s1[] = "aaa";
-    char s2[] = "aa";
+    char s1[] = "cats";
+    char s2[] = "cat";
     int s1_count = sizeof(s1) / sizeof(char);
     int s2_count = sizeof(s2) / sizeof(char);
     printf("%d\n", oneAway(s1, s1_count, s2, s2_count));
