@@ -6,7 +6,7 @@
  * n = Length of string
  */
 void urlify(char s[], int s_count) {
-    int spaces = count(s, s_count, ' ');
+    int spaces = char_count(s, s_count, ' ');
     int total = s_count + (spaces * 2);
 
     /**
@@ -50,5 +50,6 @@ int main() {
     char s[] = "Mr John Smith    ";
     int size = 13;
     urlify(s, size);
+    printf("%s\n", s);
     return 0;
 }

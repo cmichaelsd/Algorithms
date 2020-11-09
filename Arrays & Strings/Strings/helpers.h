@@ -33,7 +33,18 @@ int every(int arr[], int arr_count, int value) {
  * Update to be an integer array and learn how to cast the string array 
  * to an integer array
  */
-int count(char s[], int s_count, char value) {
+int int_count(int arr[], int arr_count, int value) {
+    int count = 0;
+    
+    for (int i = 0; i < arr_count; ++i) {
+        if (arr[i] == value) {
+            ++count;
+        }
+    }
+
+    return count;
+}
+int char_count(char s[], int s_count, char value) {
     int count = 0;
     
     for (int i = 0; i < s_count; ++i) {
