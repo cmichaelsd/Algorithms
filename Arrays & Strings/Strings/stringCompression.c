@@ -3,6 +3,13 @@
 #include <string.h>
 #include "helpers.h"
 
+/**
+ * O(n)
+ * 
+ * n = Length of input string
+ * 
+ * The same number of operations occur for each element in the input string
+ */
 char* stringCompression(char s[], int s_count, char* result) {
     /**
      * Set first character as previous and set for loop to iterate
@@ -48,8 +55,9 @@ char* stringCompression(char s[], int s_count, char* result) {
  * uppercase and lowercase letters (a-z).
  */
 int main() {
-    char s[] = "aabcccccaaa";
+    char s[] = "doodddd";
     int s_count = sizeof(s) / sizeof(char);
     char* result = (char*) malloc(s_count);
     printf("%s\n", stringCompression(s, s_count, result));
+    free(result);
 }
