@@ -1,71 +1,79 @@
 #include <stdio.h>
-#include "helpers.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
  * O(n)
- */
-int oneAwayReplace(char s1[], char s2[], int count) {
-    int sum = 0;
-    for (int i = 0; i < count; ++i) {
-        if (s1[i] != s2[i]) {
-            ++sum;
-        }
-        if (sum > 1) {
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
-/**
- * O(n)
- */
-int oneAwayInsert(char longer[], char shorter[], int shorter_count) {
-    int sum = 0;
-    for (int i = 0; i < shorter_count; ++i) {
-        // popopop
-        // opopop  -> true insert at index 0
-        // pples
-        // apples
-        if ((shorter[i] != longer[i]) && (shorter[i] == longer[i+1])) {
-            ++sum;
-        }
-        if (sum > 1) {
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
-/**
- * O(n)
- * n = Length of both string beign equal || Length of shortest
+ * n = Length of shortest string
  * 
+ * Decided to implement the best solution from Cracking The Coding Interview
+ * after coming up with a less optimal but more readable solution.
  */
 int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
     /**
-     * Operate depending on string length
-     * If equal must be a character or none apart
-     * If lengths different must be an insert apart
+     * If difference in string length is greater than one
+     * Return false
      */
-    if (s1_count == s2_count) {
-        return oneAwayReplace(s1, s2, s1_count);
+    if (abs(s1_count - s2_count) > 1) {
+        return 0;
     }
 
-    if (s1_count - 1 == s2_count) {
-        return oneAwayInsert(s1, s2, s2_count);
-    }
-
-    if (s1_count == s2_count - 1) {
-        return oneAwayInsert(s2, s1, s1_count);
-    }
+    int shorterIndex = 0;
+    int longerIndex = 0;
+    int difference = 0;
 
     /**
-     * Base case if all false
+     * Dynamically set longer and shorter strings
      */
-    return 0;
+    char* shorter = (s1_count < s2_count) ? s1 : s2;
+    char* longer = (s1_count < s2_count) ? s2 : s1;
+    int shorter_count = strlen(shorter);
+    int longer_count = strlen(longer);
+
+    /**
+     * 
+     * shorter = at
+     * longer  = cat
+     * 
+     * If a = c, ++longerIndex difference = 1;
+     * If a = a, ++longerIndex ++shorterIndex
+     * If t = t, ++longerIndex ++shorterIndex
+     * 
+     * shorter = cab
+     * longer = cap
+     * 
+     * If c = c, ++longerIndex ++shorterIndex
+     * If a = a, ++longerIndex ++shorterIndex
+     * If b = p, ++longerIndex ++shorterIndex difference = 1;
+     */
+    while (shorterIndex < shorter_count && longerIndex < longer_count) {
+        /**
+         * If the shorter strings character does not match the
+         * longer strings character incremenet the longer strings index 
+         */
+        if (shorter[shorterIndex] != longer[longerIndex]) {
+
+            /* If a difference has already been found, return false */
+            if (difference) {
+                return 0;
+            }
+
+            difference = 1;
+
+            /* If strings are equal length increment shorterIndex */
+            if (shorter_count == longer_count) {
+                ++shorterIndex;
+            }
+        } else {
+            /* If elements are the same increment shorterIndex */
+            ++shorterIndex;
+        }
+
+        /* Always increment longerIndex */
+        ++longerIndex;
+    }
+
+    return 1;
 }
 
 /**
@@ -75,7 +83,7 @@ int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
  * (or zero edits) away.
  */
 int main() {
-    char s1[] = "cats";
+    char s1[] = "caps";
     char s2[] = "cat";
     int s1_count = sizeof(s1) / sizeof(char);
     int s2_count = sizeof(s2) / sizeof(char);
