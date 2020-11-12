@@ -31,7 +31,7 @@ void stringCompression(char s[], int s_count) {
     char c = '\0';
     strncat(result, &c, 1);
 
-    int length = indexOf(result, s_count, '\0');
+    int length = strlen(result);
 
     if (length < s_count) {
         printf("%s\n", result);
