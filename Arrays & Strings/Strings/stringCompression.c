@@ -1,30 +1,43 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "helpers.h"
 
-char* stringCompression(char* s, int s_count) {
+void stringCompression(char s[], int s_count) {
     /**
-     * s = aabcccccaaa
-     * expected = a2b1c5a3
-     * 
-     * result = ""
-     * sum = 0;
-     * 
-     * for (int i = 0; i < s_count; ++i) {
-     *   a != a, sum = 1
-     *   a != b, sum = 2, result = a2, sum = 0
-     *   b != c, sum = 1, result = a2b1, sum = 0
-     *   c != c, sum = 1
-     *   ...
-     *   c != a, sum = 5, result = a2b1c5, sum = 0
-     *   ...
-     *   a != a, sum = 3, result = a2b1c5a3, sum = 0
-     * 
-     *   ++sum;
-     *   if (s[i] != s[i+1]) { // protect i+1 from getting false results out of bounds
-     *     result = s[i] + sum;
-     *     sum = 0;
-     *   }
-     * }
+     * Set first character as previous and set for loop to iterate
+     * at 1. Set sum to 1 as previous character must have a frequency of
+     * 1 so far.
      */
+    char* result = (char*) malloc(s_count);
+    int sum = 1;
+    char previous = s[0];
+    for (int i = 1; i < s_count; ++i) {
+        if (previous != s[i]) {
+            /**
+             * result += (previous + sum) 
+             * sum = 0
+             */
+            strncat(result, &previous, 1);
+            intToString(sum, result);
+
+            sum = 0;
+        }
+
+        ++sum;
+        previous = s[i];
+    }
+
+    char c = '\0';
+    strncat(result, &c, 1);
+
+    int length = indexOf(result, s_count, '\0');
+
+    if (length < s_count) {
+        printf("%s\n", result);
+    } else {
+        printf("%s\n", s);
+    }
 }
 
 
@@ -36,7 +49,7 @@ char* stringCompression(char* s, int s_count) {
  * uppercase and lowercase letters (a-z).
  */
 int main() {
-    char* s = "aabcccccaaa";
-    int s_count = 11;
-    printf("%s\n", stringCompression(s, s_count));
+    char s[] = "aabcccccaaa";
+    int s_count = sizeof(s) / sizeof(char);
+    stringCompression(s, s_count);
 }
