@@ -3,13 +3,12 @@
 #include <string.h>
 #include "helpers.h"
 
-void stringCompression(char s[], int s_count) {
+char* stringCompression(char s[], int s_count, char* result) {
     /**
      * Set first character as previous and set for loop to iterate
      * at 1. Set sum to 1 as previous character must have a frequency of
      * 1 so far.
      */
-    char* result = (char*) malloc(s_count);
     int sum = 1;
     char previous = s[0];
     for (int i = 1; i < s_count; ++i) {
@@ -34,9 +33,9 @@ void stringCompression(char s[], int s_count) {
     int length = strlen(result);
 
     if (length < s_count) {
-        printf("%s\n", result);
+        return result;
     } else {
-        printf("%s\n", s);
+        return s;
     }
 }
 
@@ -51,5 +50,6 @@ void stringCompression(char s[], int s_count) {
 int main() {
     char s[] = "aabcccccaaa";
     int s_count = sizeof(s) / sizeof(char);
-    stringCompression(s, s_count);
+    char* result = (char*) malloc(s_count);
+    printf("%s\n", stringCompression(s, s_count, result));
 }
