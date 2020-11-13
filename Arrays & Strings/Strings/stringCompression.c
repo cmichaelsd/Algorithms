@@ -11,6 +11,14 @@
  * The same number of operations occur for each element in the input string
  */
 char* stringCompression(char s[], int s_count, char* result) {
+    if (s_count > 3) {
+        /**
+         * The ideal case "aaa" could become "a2"
+         * Need at least 3 characters to bother with the logic below
+         */
+        return s;
+    }
+
     /**
      * Set first character as previous and set for loop to iterate
      * at 1. Set sum to 1 as previous character must have a frequency of
