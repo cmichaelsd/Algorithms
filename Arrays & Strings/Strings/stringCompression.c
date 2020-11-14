@@ -8,13 +8,22 @@
  * 
  * n = Length of input string
  * 
- * The same number of operations occur for each element in the input string
+ * The same number of operations occur for each element in the input string.
+ * 
+ * Could have issues with the result string in a case where to compressed string is larger
+ * than original string.
+ * 
+ * abcdefghi
+ * a1b1c1d1e1f1g1h1i1
+ * 
+ * Worst case new string can be twice as large as original.
  */
 char* stringCompression(char s[], int s_count, char* result) {
-    if (s_count > 3) {
+    printf("%d\n", s_count);
+    if (s_count < 4) {
         /**
-         * The ideal case "aaa" could become "a2"
-         * Need at least 3 characters to bother with the logic below
+         * The ideal case "aaa\0" could become "a2\0"
+         * Need at least 4 characters to bother with the logic below
          */
         return s;
     }
@@ -63,9 +72,11 @@ char* stringCompression(char s[], int s_count, char* result) {
  * uppercase and lowercase letters (a-z).
  */
 int main() {
-    char s[] = "doodddd";
+    char s[] = "aaa";
     int s_count = sizeof(s) / sizeof(char);
-    char* result = (char*) malloc(s_count);
+    char* result = (char*) malloc(s_count * 2);
     printf("%s\n", stringCompression(s, s_count, result));
     free(result);
+
+    return 0;
 }
