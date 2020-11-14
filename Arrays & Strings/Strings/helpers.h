@@ -93,17 +93,23 @@ int getDecimalsPlaceToLeft(int value) {
 /**
  * O(n)
  * n = Number of digits long a value is
+ * 
+ * Returns number of characters added to the string.
  */
-void intToString(int value, char* s) {
+int intToString(int value, char* s) {
     int decimalsToLeft = getDecimalsPlaceToLeft(value);
     char arr[decimalsToLeft];
+    int sum = 0;
 
     for (int i = decimalsToLeft - 1; i >= 0; --i) {
         arr[i] = getDecimal(value, 1) + '0';
         value = removeDecimal(value, 1);
+        ++sum;
     }
 
     strncat(s, arr, decimalsToLeft);
+
+    return sum;
 }
 
 int indexOf(char s[], int s_count, char c) {

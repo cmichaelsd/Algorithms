@@ -16,7 +16,8 @@
  * abcdefghi
  * a1b1c1d1e1f1g1h1i1
  * 
- * Worst case new string can be twice as large as original.
+ * Worst case new string can be twice as large as original. This is handled by checking if 
+ * the current length of the result is larger than input string.
  */
 char* stringCompression(char s[], int s_count, char* result) {
     printf("%d\n", s_count);
@@ -33,16 +34,27 @@ char* stringCompression(char s[], int s_count, char* result) {
      * at 1. Set sum to 1 as previous character must have a frequency of
      * 1 so far.
      */
+    int result_count = 0;
     int sum = 1;
     char previous = s[0];
     for (int i = 1; i < s_count; ++i) {
+
+        if (result_count >= s_count) {
+            break;
+        }
+
         if (previous != s[i]) {
             /**
              * result += (previous + sum) 
              * sum = 0
              */
             strncat(result, &previous, 1);
-            intToString(sum, result);
+
+            /**
+             * Add number of characters to result_count plus the single character
+             * currently being processed.
+             */
+            result_count += (intToString(sum, result) + 1);
 
             sum = 0;
         }
@@ -51,12 +63,7 @@ char* stringCompression(char s[], int s_count, char* result) {
         previous = s[i];
     }
 
-    char c = '\0';
-    strncat(result, &c, 1);
-
-    int length = strlen(result);
-
-    if (length < s_count) {
+    if (result_count < s_count) {
         return result;
     } else {
         return s;
@@ -72,9 +79,9 @@ char* stringCompression(char s[], int s_count, char* result) {
  * uppercase and lowercase letters (a-z).
  */
 int main() {
-    char s[] = "aaa";
+    char s[] = "aaacdefghi";
     int s_count = sizeof(s) / sizeof(char);
-    char* result = (char*) malloc(s_count * 2);
+    char* result = (char*) malloc(s_count);
     printf("%s\n", stringCompression(s, s_count, result));
     free(result);
 
