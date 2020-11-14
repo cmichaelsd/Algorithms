@@ -38,7 +38,6 @@ char* stringCompression(char s[], int s_count, char* result) {
     int sum = 1;
     char previous = s[0];
     for (int i = 1; i < s_count; ++i) {
-
         if (result_count >= s_count) {
             break;
         }
