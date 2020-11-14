@@ -20,7 +20,6 @@
  * the current length of the result is larger than input string.
  */
 char* stringCompression(char s[], int s_count, char* result) {
-    printf("%d\n", s_count);
     if (s_count < 4) {
         /**
          * The ideal case "aaa\0" could become "a2\0"
