@@ -4,9 +4,10 @@
 #include "helpers.h"
 
 /**
- * O(n)
+ * O(n + k^2)
  * 
  * n = Length of input string
+ * k = number of character sequences
  * 
  * The same number of operations occur for each element in the input string.
  * 
