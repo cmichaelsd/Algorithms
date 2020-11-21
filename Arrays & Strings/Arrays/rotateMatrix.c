@@ -1,11 +1,33 @@
 #include <stdio.h>
+#include "helpers.h"
 
-void printIntMatrix(int matrix[5][5], int n_count) {
-    for (int i = 0; i < n_count; ++i) {
-        for (int j = 0; j < n_count; ++j) {
-            printf("%d ", matrix[i][j]);
+/**
+ * O(n^2)
+ * 
+ * n = Number of elements
+ */
+void rotateMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE], int n_count) {
+    for (int layer = 0; layer < (n_count / 2); ++layer) {
+        int start = layer;
+        int end = n_count - 1 - start;
+        for (int i = start; i < end; ++i) {
+            int offset = i - start;
+            
+            /* Save top left */
+            int temp = matrix[start][i];
+
+            // /* Assign bottom left to top left */
+            matrix[start][i] = matrix[end-offset][start];
+
+            // /* Assign bottom right to bottom left */
+            matrix[end-offset][start] = matrix[end][end-offset];
+
+            // /* Assign top right to bottom left */
+            matrix[end][end-offset] = matrix[i][end];
+
+            // /* Assign top right to temp */
+            matrix[i][end] = temp;
         }
-        printf("\n");
     }
 }
 
@@ -15,17 +37,17 @@ void printIntMatrix(int matrix[5][5], int n_count) {
  * in place?
  */
 int main() {
-    int n_count = 5;
-    int matrix[][5] = {
-        {1,1,0,1,0},
-        {1,0,1,1,0},
-        {0,1,1,0,1},
-        {1,1,0,1,0},
-        {0,1,0,1,0}
+    int matrix[MATRIX_SIZE][MATRIX_SIZE] = {
+        {1,2,3,4},
+        {2,8,9,5},
+        {1,6,0,6},
+        {0,9,8,7}
     };
 
-    // rotateMatrix(matrix, n_count);
-    printIntMatrix(matrix, n_count);
+    printIntMatrix(matrix, MATRIX_SIZE);
+    printf("\n\n");
+    rotateMatrix(matrix, MATRIX_SIZE);
+    printIntMatrix(matrix, MATRIX_SIZE);
 
     return 0;
 }
