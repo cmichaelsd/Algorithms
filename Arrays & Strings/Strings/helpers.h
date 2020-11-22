@@ -100,7 +100,7 @@ int getDecimalsPlaceToLeft(int value) {
 }
 
 /**
- * Time: O(n)
+ * Time: O(n * log n)
  * Space: O(n)
  * n = Number of digits long a value is
  * 

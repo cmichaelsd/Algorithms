@@ -2,7 +2,8 @@
 #include "helpers.h"
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  * n = Length of string
  */
 void urlify(char s[], int s_count) {
