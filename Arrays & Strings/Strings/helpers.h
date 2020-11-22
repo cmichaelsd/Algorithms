@@ -77,7 +77,8 @@ int removeDecimal(int value, int tensPower) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  * n = Number of digits long a value is
  */
 int getDecimalsPlaceToLeft(int value) {
@@ -91,7 +92,8 @@ int getDecimalsPlaceToLeft(int value) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(n)
  * n = Number of digits long a value is
  * 
  * Returns number of characters added to the string.
@@ -99,23 +101,48 @@ int getDecimalsPlaceToLeft(int value) {
 int intToString(int value, char* s) {
     int decimalsToLeft = getDecimalsPlaceToLeft(value);
     char arr[decimalsToLeft];
-    int sum = 0;
 
     for (int i = decimalsToLeft - 1; i >= 0; --i) {
         arr[i] = getDecimal(value, 1) + '0';
         value = removeDecimal(value, 1);
-        ++sum;
     }
 
     strncat(s, arr, decimalsToLeft);
 
-    return sum;
+    return sizeof(arr) / sizeof(char);
 }
 
-int indexOf(char s[], int s_count, char c) {
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
+int indexOf(char s[], size_t s_count, char c) {
     for (int i = 0; i < s_count; ++i) {
         if (s[i] == c) {
             return i;
+        }
+    }
+
+    return -1;
+}
+
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
+int isSubstring(char source[], char substring[], size_t source_count, size_t substring_count) {
+    if (source_count < substring_count) {
+        return -1;
+    }
+
+    int index = 0;
+    for (int i = 0; i < source_count; ++i) {
+        if (index == substring_count - 1) {
+            return i - index;
+        }else if (source[i] == substring[index] && index < substring_count) {
+            ++index;
+        } else {
+            index = 0;
         }
     }
 
