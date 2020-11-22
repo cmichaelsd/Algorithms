@@ -1,51 +1,100 @@
 #include <stdio.h>
 #include "helpers.h"
 
+/**
+ * O(n)
+ */
+void removeRow(int matrix[MATRIX_M][MATRIX_N], int row, int n_count) {
+    for (int i = 0; i < n_count; ++i) {
+        matrix[row][i] = 0;
+    }
+}
 
 /**
- * O(m^v*m * n^v*n)
+ * O(m)
+ */
+void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, int m_count) {
+    for (int i = 0; i < m_count; ++i) {
+        matrix[i][column] = 0;
+    }
+}
+
+/**
+ * Time: O(m * n)
+ * Space: O(1)
  * 
- * m = Number of rows
- * n = Number of columns
- * v = number of zeros in matrix
- * 
- * For each row                                          -> m *
- *   For each column                                     -> n *
- *     If the item is a 0                                -> v 
- *       Replace all row items with 0 at current column  -> m +
- *       Replace all column items with 0 at current row  -> n
+ * I previously used a bit vector solution but it was O(n) space.
  */
 void zeroMatrix(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count) {
-    int indiciesMatrix[m_count][n_count];
-    matrixMxNFill(indiciesMatrix, m_count, n_count, 1);
+    int rowHasZero= 0;
+    int columnHasZero = 0;
 
-    /* Map found zeros to indicies matrix. */
+    /**
+     * See if first row has a zero.
+     */
+    for (int column = 0; column < n_count; ++column) {
+        if (matrix[0][column] == 0) {
+            rowHasZero = 1;
+            break;
+        }
+    }
+
+    /**
+     * See if first column has a zero.
+     */
     for (int row = 0; row < m_count; ++row) {
-        for (int column = 0; column < n_count; ++column) {
+        if (matrix[row][0] == 0) {
+            columnHasZero = 1;
+            break;
+        }
+    }
+
+    /**
+     * If a zero is found in the rest of the matrix.
+     * At the found index set the first row at index to zero
+     * At the found index set the first column at index to zero
+     */
+    for (int row = 1; row < m_count; ++row) {
+        for (int column = 1; column < m_count; ++column) {
             if (matrix[row][column] == 0) {
-                indiciesMatrix[row][column] = 0;
+                matrix[row][0] = 0;
+                matrix[0][column] = 0;
             }
         }
     }
 
     /**
-     * Search indicies for a found zero.
-     * Based on that indcies row set all items of matching row in matrix to zero
-     * Based on that indcies column set all items of matching column in matrix to zero
+     * If any column but the first has a zero set column to zero.
      */
-    for (int row = 0; row < m_count; ++row) {
-        for (int column = 0; column < n_count; ++column) {
-            if (indiciesMatrix[row][column] == 0) {
-                for (int j = 0; j < m_count; ++j) {
-                    matrix[j][column] = 0;
-                }
-
-                for (int i = 0; i < n_count; ++i) {
-                    matrix[row][i] = 0;
-                }
-            }
+    for (int column = 1; column < n_count; ++column) {
+        if (matrix[0][column] == 0) {
+            removeColumn(matrix, column, m_count);
         }
     }
+
+    /**
+     * If any row but the first has a zero set row to zero.
+     */
+    for (int row = 1; row < m_count; ++row) {
+        if (matrix[row][0] == 0) {
+            removeRow(matrix, row, n_count);
+        }
+    }
+
+    /**
+     * If the first row originally had a zero set first row to zero.
+     */
+    if (rowHasZero) {
+        removeRow(matrix, 0, n_count);
+    }
+
+    /**
+     * If the first column originally had a zero set first column to zero.
+     */
+    if (columnHasZero) {
+        removeColumn(matrix, 0, m_count);
+    }
+ 
 }
 
 /**
