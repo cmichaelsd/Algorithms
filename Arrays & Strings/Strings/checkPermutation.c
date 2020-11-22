@@ -11,15 +11,15 @@
  * If at the end of this process the Hash Table has 0 for very index the strings are permutations of each other
  */
 int checkPermutation(char s1[], char s2[], int size) {
-    int arr[ASCI_CHAR_EXTENDED];
-    fill(arr, ASCI_CHAR_EXTENDED, 0);
+    int arr[ASCII_CHAR_EXTENDED];
+    fill(arr, ASCII_CHAR_EXTENDED, 0);
 
     for (int i = 0; i < size; ++i) {
         ++arr[s1[i]];
         --arr[s2[i]];
     }
 
-    return every(arr, ASCI_CHAR_EXTENDED, 0);
+    return every(arr, ASCII_CHAR_EXTENDED, 0);
 }
 
 /**

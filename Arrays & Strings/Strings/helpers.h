@@ -4,7 +4,7 @@
 #include <math.h>
 
 const int ASCII_CHAR = 128;
-const int ASCI_CHAR_EXTENDED =  ASCII_CHAR + ASCII_CHAR;
+const int ASCII_CHAR_EXTENDED =  ASCII_CHAR + ASCII_CHAR;
 
 /**
  * O(n)
