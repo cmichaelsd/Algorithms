@@ -11,8 +11,8 @@
  * 
  * For each row                                          -> m *
  *   For each column                                     -> n *
- *     If the item is a 0                                -> v +
- *       Replace all row items with 0 at current column  -> m
+ *     If the item is a 0                                -> v 
+ *       Replace all row items with 0 at current column  -> m +
  *       Replace all column items with 0 at current row  -> n
  */
 void zeroMatrix(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count) {
@@ -62,8 +62,8 @@ int main() {
         {1,1,1,0},
     };
 
-    printIntMxNMAtrix(matrix, MATRIX_M, MATRIX_N);
+    printIntMxNMatrix(matrix, MATRIX_M, MATRIX_N);
     printf("\n\n");
     zeroMatrix(matrix, MATRIX_M, MATRIX_N);
-    printIntMxNMAtrix(matrix, MATRIX_M, MATRIX_N);
+    printIntMxNMatrix(matrix, MATRIX_M, MATRIX_N);
 }

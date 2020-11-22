@@ -13,7 +13,7 @@ void matrixMxNFill(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count, int
     }
 }
 
-void printIntMxNMAtrix(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count) {
+void printIntMxNMatrix(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count) {
     for (int i = 0; i < m_count; ++i) {
         for (int j = 0; j < n_count; ++j) {
             printf("%d ", matrix[i][j]);
