@@ -3,8 +3,10 @@
 #include "helpers.h"
 
 /**
- * Time: O()
- * Space: O()
+ * Time: O(n)
+ * Space: O(n * 2)
+ * 
+ * n = s1_count
  */
 int stringRotation(char s1[], char s2[], size_t s1_count, size_t s2_count) {
     /* If strings are different lengths, return 0. */
@@ -37,11 +39,7 @@ int main() {
     char s2[] = "erbottlewat";
     size_t s2_count = 12;
 
-    char s[4];
-
-    printf("%d\n", intToString(100, s));
-
-    // printf("%d\n", stringRotation(s1, s2, s1_count, s2_count));
+    printf("%d\n", stringRotation(s1, s2, s1_count, s2_count));
 
     return 0;
 }
