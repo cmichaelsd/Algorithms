@@ -4,7 +4,7 @@
 
 /**
  * Time: O(n)
- * Space: O(n * 2)
+ * Space: O(n)
  * 
  * n = s1_count
  */

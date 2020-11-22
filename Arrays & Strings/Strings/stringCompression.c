@@ -4,7 +4,8 @@
 #include "helpers.h"
 
 /**
- * O(n + k^2)
+ * Time: O(n + k^2)
+ * Space: O(c)
  * 
  * n = Length of input string
  * k = number of character sequences
