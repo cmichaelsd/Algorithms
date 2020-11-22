@@ -3,7 +3,8 @@
 #include <math.h>
 
 /**
- * O(1)
+ * Time: O(log tensPower)
+ * Space: O(c)
  * The pow function could be O(n) but I'm assuming its optimized
  * enough for this to be regarded as constant
  */
@@ -12,7 +13,8 @@ int getDecimal(int value, int tensPower) {
 }
 
 /**
- * O(1)
+ * Time: O(log tensPower)
+ * Space: O(c)
  * For getDecimal and removeDecimal I added a tensPower variable
  * incase I wanted to used these as helper functions for other functions
  * where I may not always be operating on the least significant digit (10^1 in the case of how this function works instead of 10^0)
@@ -24,7 +26,8 @@ int removeDecimal(int value, int tensPower) {
 }
 
 /**
- * O(n)
+ * Time: O(n * log decimalsPlace)
+ * Space: O(c)
  * n = Number of digits long a value is
  */
 int getDecimalsPlaceToLeft(int value) {
@@ -38,10 +41,13 @@ int getDecimalsPlaceToLeft(int value) {
 }
 
 /**
- * O(n)
+ * Time: O(n * log n)
+ * Space: O(n)
  * n = Number of digits long a value is
+ * 
+ * Returns number of characters added to the string.
  */
-void intToString(int value, char* s) {
+int intToString(int value, char* s) {
     int decimalsToLeft = getDecimalsPlaceToLeft(value);
     char arr[decimalsToLeft];
 
@@ -51,13 +57,17 @@ void intToString(int value, char* s) {
     }
 
     strncat(s, arr, decimalsToLeft);
+
+    return sizeof(arr) / sizeof(char);
 }
 
 /**
- * O(d * v)
- * d = Number of digits in a value
- * v = The value
- * For each value operate on the length of the value
+ * Time: O(c)
+ * Space: O(c)
+ * 
+ * Since each value in the array must always be in dd/mm/yyy format
+ * the time for this function to run will always be the same. Input will
+ * not change this functions run time.
  */
 char* buildDateString(int dd, int mm, int yyyy, char* s) {
     int arr[] = {dd, mm, yyyy};
@@ -80,21 +90,24 @@ char* buildDateString(int dd, int mm, int yyyy, char* s) {
 }
 
 /**
- * O(1)
+ * Time: O(c)
+ * Space: O(c)
  */
 int isLeapYearJulianCalendar(int year) {
     return year % 4 == 0;
 }
 
 /**
- * O(1)
+ * Time: O(c)
+ * Space: O(c)
  */
 int isLeapYearGregorianCalendar(int year) {
     return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
 }
 
 /**
- * O(1)
+ * Time: O(c)
+ * Space: O(c)
  * Factored out Julian and Gregorian calendars in case more calendars needed to be compared
  */
 int isLeapYear(int year) {
@@ -104,7 +117,8 @@ int isLeapYear(int year) {
 }
 
 /**
- * O(1)
+ * Time: O(c)
+ * Space: O(c)
  * This function is a constant of 12 months
  * Input does not change the runtime
  */
@@ -128,20 +142,17 @@ void daysIntoYear(int daysAfter, int* dd, int* mm, int yyyy) {
 }
 
 /**
- * O(d * v)
- * Regarding the buildDateString function which this function calls: the runtime is O(d * v)
+ * Time: O(c)
+ * Space: O(c)
  * 
- * Because this charcter array is fixed at 10 the input can only change the runtime if 
- * buildDateString has a Day or Month which is a single digit long number.
+ * Because this charcter array is fixed at 10 the input cant change the runtime.
  */
 char* dayOfProgrammer(int year) {
     static char s[10];
     int dd;
     int mm;
 
-    // O(1)
     daysIntoYear(256, &dd, &mm, year);
-    // O(d * v)
     buildDateString(dd, mm, year, s);
 
     return s;
