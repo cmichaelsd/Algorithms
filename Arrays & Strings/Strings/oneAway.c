@@ -12,7 +12,7 @@
  * Decided to implement the best solution from Cracking The Coding Interview
  * after coming up with a less optimal but more readable solution.
  */
-int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
+int oneAway(char s1[], size_t s1_count, char s2[], size_t s2_count) {
     /**
      * If difference in string length is greater than one
      * Return false
@@ -88,8 +88,8 @@ int oneAway(char s1[], int s1_count, char s2[], int s2_count) {
 int main() {
     char s1[] = "caps";
     char s2[] = "cat";
-    int s1_count = sizeof(s1) / sizeof(char);
-    int s2_count = sizeof(s2) / sizeof(char);
+    size_t s1_count = sizeof(s1) / sizeof(char);
+    size_t s2_count = sizeof(s2) / sizeof(char);
     printf("%d\n", oneAway(s1, s1_count, s2, s2_count));
     return 0;
 }

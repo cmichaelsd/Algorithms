@@ -2,7 +2,8 @@
 #include <string.h>
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(n)
  */
 int isUnqiue(char* s) {
     int bitVector = 0;

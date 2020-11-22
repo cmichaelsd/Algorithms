@@ -3,7 +3,9 @@
 #include <unistd.h>
 
 /**
- * O(max(n))
+ * Time: O(max(n))
+ * Space: O()
+ * 
  * The runtime is based on the largest number in the array in seconds
  */
 void sleepSort(int arr[], int arr_count) {

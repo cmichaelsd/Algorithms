@@ -86,7 +86,7 @@ int toggle(int bitVector, int index) {
  * This will create a bit vector which is just a way of saying a series of ones and zeros
  * The idea is to send a 1 to the index in this number which is the character code
  */
-int createBitVector(char s[], int s_count) {
+int createBitVector(char s[], size_t s_count) {
     int bitVector = 0;
 
     for (int i = 0; i < s_count; ++i) {
@@ -101,7 +101,7 @@ int createBitVector(char s[], int s_count) {
  * Space: O(n)
  * I wanted to write out the bit vector solution to deeply understand why it is working
  */
-int palindromePermutation(char s[], int s_count) {
+int palindromePermutation(char s[], size_t s_count) {
     int bitVector = createBitVector(s, s_count);
     return bitVector == 0 || checkExactlyOneBitSet(bitVector);
 }
@@ -113,7 +113,7 @@ int palindromePermutation(char s[], int s_count) {
  */
 int main() {
     char s[] = "tacotaco";
-    int s_count = sizeof(s) / sizeof(char);
+    size_t s_count = sizeof(s) / sizeof(char);
     printf("%d\n", palindromePermutation(s, s_count));
 
     return 0;

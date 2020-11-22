@@ -2,16 +2,8 @@
 #include <stdio.h>
 
 /**
- * O(n)
- */
-// void printArray(int arr[], int arr_count) {
-//     for (int i = 0; i < arr_count; ++i) {
-//         printf("%d\n", arr[i]);
-//     }
-// }
-
-/**
- * O(1)
+ * Time: O(c)
+ * Space: O(c)
  */
 void swap(int* a, int* b) {
     int temp = *a;
@@ -20,7 +12,9 @@ void swap(int* a, int* b) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
+ * 
  * n = high
  */
 int partition(int arr[], int low, int high) {
@@ -44,7 +38,9 @@ int partition(int arr[], int low, int high) {
 }
 
 /**
- * O(n * log(n))
+ * Time: O(log n)
+ * Space: O(log n)
+ * 
  * Will run log(n) times where n = arrays size
  * and for each call to partition a linear operation happens
  */

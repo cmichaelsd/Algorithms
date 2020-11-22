@@ -2,18 +2,20 @@
 #include "helpers.h"
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  */
-void removeRow(int matrix[MATRIX_M][MATRIX_N], int row, int n_count) {
+void removeRow(int matrix[MATRIX_M][MATRIX_N], int row, size_t n_count) {
     for (int i = 0; i < n_count; ++i) {
         matrix[row][i] = 0;
     }
 }
 
 /**
- * O(m)
+ * Time: O(m)
+ * Space: O(c)
  */
-void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, int m_count) {
+void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, size_t m_count) {
     for (int i = 0; i < m_count; ++i) {
         matrix[i][column] = 0;
     }
@@ -21,11 +23,11 @@ void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, int m_count) {
 
 /**
  * Time: O(m * n)
- * Space: O(1)
+ * Space: O(c)
  * 
  * I previously used a bit vector solution but it was O(n) space.
  */
-void zeroMatrix(int matrix[MATRIX_M][MATRIX_N], int m_count, int n_count) {
+void zeroMatrix(int matrix[MATRIX_M][MATRIX_N], size_t m_count, size_t n_count) {
     int rowHasZero= 0;
     int columnHasZero = 0;
 

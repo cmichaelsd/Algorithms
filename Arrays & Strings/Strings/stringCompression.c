@@ -21,7 +21,7 @@
  * Worst case new string can be twice as large as original. This is handled by checking if 
  * the current length of the result is larger than input string.
  */
-char* stringCompression(char s[], int s_count, char* result) {
+char* stringCompression(char s[], size_t s_count, char* result) {
     if (s_count < 4) {
         /**
          * The ideal case "aaa\0" could become "a2\0"
@@ -80,7 +80,7 @@ char* stringCompression(char s[], int s_count, char* result) {
  */
 int main() {
     char s[] = "aaacdefghi";
-    int s_count = sizeof(s) / sizeof(char);
+    size_t s_count = sizeof(s) / sizeof(char);
     char* result = (char*) malloc(s_count);
     printf("%s\n", stringCompression(s, s_count, result));
     free(result);

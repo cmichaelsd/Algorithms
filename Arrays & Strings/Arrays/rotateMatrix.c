@@ -2,11 +2,12 @@
 #include "helpers.h"
 
 /**
- * O(n^2)
+ * Time: O(n^2)
+ * Space: O(n)
  * 
  * n = Number of elements
  */
-void rotateMatrix(int matrix[MATRIX_N][MATRIX_N], int n_count) {
+void rotateMatrix(int matrix[MATRIX_N][MATRIX_N], size_t n_count) {
     for (int layer = 0; layer < (n_count / 2); ++layer) {
         int start = layer;
         int end = n_count - 1 - start;
