@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 /**
- * O(c)
+ * Time: O(c)
+ * Space: O(c)
  * 
  * This function is to find if our series of bits only contain a single one.
  * Theres a trick for this lets say I have 8
@@ -25,7 +26,9 @@ int checkExactlyOneBitSet(int bitVector) {
 }
 
 /**
- * O(c)
+ * Time: O(c)
+ * Space: O(c)
+ * 
  * This may seem confusing but with a little study it becomes very clear. If you are confused read the first few chapters of 
  * Code: The Hidden Language of Computer Hardware and Software by Charles Petzold
  * This problem if based on a concept in electrical engineering - logic gates - and therefore computer programing.
@@ -75,7 +78,9 @@ int toggle(int bitVector, int index) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(n)
+ * 
  * n = length of the string
  * 
  * This will create a bit vector which is just a way of saying a series of ones and zeros
@@ -92,7 +97,8 @@ int createBitVector(char s[], int s_count) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(n)
  * I wanted to write out the bit vector solution to deeply understand why it is working
  */
 int palindromePermutation(char s[], int s_count) {
