@@ -7,18 +7,20 @@ const int ASCII_CHAR = 128;
 const int ASCII_CHAR_EXTENDED =  ASCII_CHAR + ASCII_CHAR;
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  */
-void fill(int arr[], int arr_count, int value) {
+void fill(int arr[], size_t arr_count, int value) {
     for (int i = 0; i < arr_count; ++i) {
         arr[i] = value;
     }
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  */
-int every(int arr[], int arr_count, int value) {
+int every(int arr[], size_t arr_count, int value) {
     for (int i = 0; i < arr_count; ++i) {
         if (arr[i] != value) {
             return 0;
@@ -29,12 +31,13 @@ int every(int arr[], int arr_count, int value) {
 }
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  * 
  * Update to be an integer array and learn how to cast the string array 
  * to an integer array
  */
-int int_count(int arr[], int arr_count, int value) {
+int int_count(int arr[], size_t arr_count, int value) {
     int count = 0;
     
     for (int i = 0; i < arr_count; ++i) {
@@ -46,9 +49,10 @@ int int_count(int arr[], int arr_count, int value) {
     return count;
 }
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(c)
  */
-int char_count(char s[], int s_count, char value) {
+int char_count(char s[], size_t s_count, char value) {
     int count = 0;
     
     for (int i = 0; i < s_count; ++i) {
@@ -61,14 +65,18 @@ int char_count(char s[], int s_count, char value) {
 }
 
 /**
- * O(1)
+ * Time: O(log tensPower)
+ * Space: O(c)
  */
 int getDecimal(int value, int tensPower) {
     return value % (int) pow(10, tensPower);
 }
 
 /**
- * O(1)
+ * Time: O(log tensPower)
+ * Space: O(1)
+ * 
+ * The native C pow() function is log of the exponent
  */
 int removeDecimal(int value, int tensPower) {
     int power = (int) pow(10, tensPower);
