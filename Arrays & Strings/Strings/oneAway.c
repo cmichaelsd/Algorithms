@@ -3,8 +3,11 @@
 #include <stdlib.h>
 
 /**
- * O(n)
+ * Time: O(n)
+ * Space: O(m + n)
+ * 
  * n = Length of shortest string
+ * m = Length of longest string
  * 
  * Decided to implement the best solution from Cracking The Coding Interview
  * after coming up with a less optimal but more readable solution.
