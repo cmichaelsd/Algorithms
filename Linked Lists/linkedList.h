@@ -28,33 +28,29 @@ void addNode(int data) {
     head = link;
 }
 
-struct node* deleteNode(int position) {
+struct node* deleteNode(int data) {
     struct node* current = head;
-    struct node* previous = NULL;
-    int iterations = 0;
 
     if (head == NULL) {
         return NULL;
     }
 
-    if (position == 0) {
-        head = head->next;
-        return current;
+    if (current->data == data) {
+        head = current->next;
+
+        return head;
     }
 
-    while (position != iterations) {
-        if (current->next == NULL) {
-            return NULL;
-        } else {
-            previous = current;
-            current = current->next;
-            ++iterations;
+    while (current->next != NULL) {
+        if (current->next->data == data)  {
+            current->next = current->next->next;
+
+            return head;
         }
+        current = current->next;
     }
 
-    previous->next = current->next;
-
-    return current;
+    return head;
 }
 
 #endif
