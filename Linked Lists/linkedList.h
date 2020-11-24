@@ -3,15 +3,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct node {
-    struct node* next;
+typedef struct node {
     int data;
-};
+    struct node* next;
+} node_t;
 
-struct node* head = NULL;
-
-void printLinkedList() {
-    struct node* ptr = head;
+void printLinkedList(node_t* head) {
+    node_t* ptr = head;
 
     while (ptr != NULL) {
         printf("%d\n", ptr->data);
@@ -19,41 +17,53 @@ void printLinkedList() {
     }
 }
 
-void addNode(int data) {
-    struct node* link = (struct node*) malloc(sizeof(struct node));
+void addNode(node_t ** head, int data) {
+    node_t* link = (node_t*) malloc(sizeof(node_t));
 
     link->data = data;
-    link->next = head;
+    link->next = *head;
 
-    head = link;
+    *head = link;
 }
 
-struct node* deleteNode(int data) {
-    struct node* current = head;
-    struct node* previous = NULL;
+void addNodes(node_t** head, int data[], size_t data_count) {
+    for (int i = 0; i < data_count; ++i) {
+        addNode(head, data[i]);
+    }
+}
+
+int deleteNode(node_t* head, int data) {
+    node_t* current = head;
+    node_t* previous = NULL;
 
     if (head == NULL) {
-        return NULL;
+        return -1;
     }
 
     if (current->data == data) {
-        head = current->next;
+        int value = head->data;
 
-        return head;
+        head = current->next;
+        free(current);
+
+        return value;
     }
 
     while (current != NULL) {
         if (current->data == data) {
+            int value = current->data;
+
             previous->next = current->next;
             free(current);
 
-            return head;
+            return value;
         }
+
         previous = current;
         current = current->next;
     }
 
-    return head;
+    return -1;
 }
 
 #endif
