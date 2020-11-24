@@ -1,9 +1,60 @@
 #include <stdio.h>
 #include "linkedList.h"
 
-// struct node* removeDups() {
+/**
+ * Time: O(n)
+ * Space: O(n)
+ */
+void removeDups(node_t* head) {
+    int bitVector = 0;
+    node_t* current = head;
 
-// }
+    if (head == NULL) {
+        return;
+    }
+
+    int mask = 1 << current->data;
+    bitVector |= mask;
+
+    while (current->next != NULL) {
+        mask = 1 << current->next->data;
+        if ((bitVector & mask) != 0) {
+            node_t* deletedNode = current->next;
+            current->next = current->next->next;
+            free(deletedNode);
+        } else {
+            bitVector |= mask;
+            current = current->next;
+        }
+    }
+}
+
+/**
+ * Time: O(n^2)
+ * Space: O(c)
+ */
+void removeDupsNoBuffer(node_t* head) {
+    node_t* current = head;
+
+    if (head == NULL) {
+        return;
+    }
+
+    while (current != NULL) {
+        node_t* runner = current;
+        while (runner->next != NULL) {
+            if (runner->next->data == current->data) {
+                node_t* deletedNode = runner->next;
+                runner->next = runner->next->next;
+                free(deletedNode);
+            } else {
+                runner = runner->next;
+            }
+        }
+
+        current = current->next;
+    }
+}
 
 /**
  * Write code to remove duplicates from an unsorted linked list.
@@ -11,11 +62,12 @@
  * How would you do this if a temporary buffer is not allowed?
  */
 int main() {
-    node_t * head = (node_t *) malloc(sizeof(node_t));
+    node_t* head = (node_t *) malloc(sizeof(node_t));
 
-    int data[] = {1,2,3,4,5,6,7,8,9};
-    addNodes(&head, data, 9);
-    deleteNode(head, 8);
+    int data[] = {0,1,1,1,14,1,5,1};
+    size_t data_count = sizeof(data) / sizeof(int);
+    addNodes(&head, data, data_count);
+    removeDups(head);
     printLinkedList(head);
     return 0;
 }

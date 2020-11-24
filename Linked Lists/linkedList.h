@@ -11,6 +11,10 @@ typedef struct node {
 void printLinkedList(node_t* head) {
     node_t* ptr = head;
 
+    if (head == NULL) {
+        return;
+    }
+
     while (ptr != NULL) {
         printf("%d\n", ptr->data);
         ptr = ptr->next;
