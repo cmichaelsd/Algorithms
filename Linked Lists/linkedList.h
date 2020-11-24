@@ -30,6 +30,7 @@ void addNode(int data) {
 
 struct node* deleteNode(int data) {
     struct node* current = head;
+    struct node* previous = NULL;
 
     if (head == NULL) {
         return NULL;
@@ -41,12 +42,14 @@ struct node* deleteNode(int data) {
         return head;
     }
 
-    while (current->next != NULL) {
-        if (current->next->data == data)  {
-            current->next = current->next->next;
+    while (current != NULL) {
+        if (current->data == data) {
+            previous->next = current->next;
+            free(current);
 
             return head;
         }
+        previous = current;
         current = current->next;
     }
 
