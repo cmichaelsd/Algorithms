@@ -5,11 +5,11 @@
  * Time: O(n)
  * Space: O(n)
  */
-void removeDups(node_t* head) {
+void removeDups(node_t** head) {
     int bitVector = 0;
-    node_t* current = head;
+    node_t* current = *head;
 
-    if (head == NULL) {
+    if (current == NULL) {
         return;
     }
 
@@ -33,10 +33,10 @@ void removeDups(node_t* head) {
  * Time: O(n^2)
  * Space: O(c)
  */
-void removeDupsNoBuffer(node_t* head) {
-    node_t* current = head;
+void removeDupsNoBuffer(node_t** head) {
+    node_t* current = *head;
 
-    if (head == NULL) {
+    if (current == NULL) {
         return;
     }
 
@@ -62,12 +62,14 @@ void removeDupsNoBuffer(node_t* head) {
  * How would you do this if a temporary buffer is not allowed?
  */
 int main() {
-    node_t* head = (node_t *) malloc(sizeof(node_t));
+    node_t* head = (node_t*) malloc(sizeof(node_t));
 
     int data[] = {0,1,1,1,14,5,1};
     size_t data_count = sizeof(data) / sizeof(int);
     addNodes(&head, data, data_count);
-    removeDups(head);
+    removeDups(&head);
     printLinkedList(head);
+
+    free(head);
     return 0;
 }
