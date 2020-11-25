@@ -64,7 +64,7 @@ void removeDupsNoBuffer(node_t* head) {
 int main() {
     node_t* head = (node_t *) malloc(sizeof(node_t));
 
-    int data[] = {0,1,1,1,14,1,5,1};
+    int data[] = {0,1,1,1,14,5,1};
     size_t data_count = sizeof(data) / sizeof(int);
     addNodes(&head, data, data_count);
     removeDups(head);

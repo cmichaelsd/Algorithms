@@ -36,34 +36,33 @@ void addNodes(node_t** head, int data[], size_t data_count) {
     }
 }
 
-int deleteNode(node_t* head, int data) {
-    node_t* current = head;
-    node_t* previous = NULL;
+int deleteNode(node_t** head, int data) {
+    node_t* current = *head;
 
     if (head == NULL) {
         return -1;
     }
 
     if (current->data == data) {
-        int value = head->data;
+        int value = current->data;
 
-        head = current->next;
+        *head = current->next;
         free(current);
 
         return value;
     }
 
-    while (current != NULL) {
-        if (current->data == data) {
-            int value = current->data;
+    while (current->next != NULL) {
+        if (current->next->data == data) {
+            int value = current->next->data;
+            node_t* deletedNode = current->next;
 
-            previous->next = current->next;
-            free(current);
+            current->next = current->next->next;
+            free(deletedNode);
 
             return value;
         }
 
-        previous = current;
         current = current->next;
     }
 
