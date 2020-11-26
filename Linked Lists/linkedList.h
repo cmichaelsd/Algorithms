@@ -69,6 +69,21 @@ int deleteNode(node_t** head, int data) {
     return -1;
 }
 
+node_t* getNthNode(node_t* head, int n) {
+    node_t* current = head;
+
+    if (head == NULL || n < 1) {
+        return NULL;
+    }
+
+    while (n > 1 && current != NULL) {
+        --n;
+        current = current->next;
+    }
+
+    return current;
+}
+
 void freeLinkedList(node_t* head) {
     node_t* current = head;
 
