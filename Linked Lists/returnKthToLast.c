@@ -6,12 +6,12 @@
  * Time: O(n)
  * Space: O(c)
  */
-void returnKthToLastRunner(node_t* head, int k) {
+int returnKthToLastRunner(node_t* head, int k) {
     node_t* current = head;
     node_t* runner = head;
 
     if (head == NULL || k < 1) {
-        return;
+        return -1;
     }
 
     while (k > 0) {
