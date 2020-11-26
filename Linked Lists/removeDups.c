@@ -70,6 +70,6 @@ int main() {
     removeDups(&head);
     printLinkedList(head);
 
-    free(head);
+    freeLinkedList(head);
     return 0;
 }

@@ -21,7 +21,7 @@ void printLinkedList(node_t* head) {
     }
 }
 
-void addNode(node_t ** head, int data) {
+void addNode(node_t** head, int data) {
     node_t* link = (node_t*) malloc(sizeof(node_t));
 
     link->data = data;
@@ -67,6 +67,21 @@ int deleteNode(node_t** head, int data) {
     }
 
     return -1;
+}
+
+void freeLinkedList(node_t* head) {
+    node_t* current = head;
+
+    if (head == NULL) {
+        return;
+    }
+
+    while (current != NULL) {
+        node_t* next = current->next;
+        free(current);
+
+        current = next;
+    }
 }
 
 #endif

@@ -57,6 +57,6 @@ int main() {
     returnKthToLastRunner(head, 2);
     printLinkedList(head);
 
-    free(head);
+    freeLinkedList(head);
     return 0;
 }
