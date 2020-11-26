@@ -7,6 +7,11 @@
  * Time: O(n + k^2)
  * Space: O(c)
  * 
+ * Application: This string compression technique could be used to compress a bitmap. If you
+ * have an image of a sky you could iterate through the raw data and compress repeated values as is
+ * done with this string; the image would be a lossless format which is a smaller representation of the
+ * original file.
+ * 
  * n = Length of input string
  * k = number of character sequences
  * 
