@@ -5,8 +5,17 @@
  * Time: O()
  * Space: O()
  */
-node_t* returnKthToLast(node_t* head, int k) {
+int returnKthToLast(node_t* head, int k) {
+    if (head == NULL) {
+        return 0;
+    }
 
+    int index = returnKthToLast(head->next, k) + 1;
+    if (index == k) {
+        printf("The %d to last element is %d\n", k, head->data);
+    }
+
+    return index;
 }
 
 /**
@@ -14,12 +23,12 @@ node_t* returnKthToLast(node_t* head, int k) {
  * a singly linked list.
  */
 int main() {
-    node_t* head = (node_t*) malloc(sizeof(node_t));
-    int data[] = {1,2,3,4,5,6,7,8,9};
+    node_t* head = NULL;
+    int data[] = {1,6,7,8,9};
     size_t data_count = sizeof(data) / sizeof(int);
 
     addNodes(&head, data, data_count);
-    returnKthToLast(head, 3);
+    returnKthToLast(head, 2);
     printLinkedList(head);
 
     free(head);
