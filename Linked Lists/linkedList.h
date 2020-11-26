@@ -8,6 +8,10 @@ typedef struct node {
     struct node* next;
 } node_t;
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
 void printLinkedList(node_t* head) {
     node_t* ptr = head;
 
@@ -21,6 +25,10 @@ void printLinkedList(node_t* head) {
     }
 }
 
+/**
+ * Time: O(c)
+ * Space: O(c)
+ */
 void addNode(node_t** head, int data) {
     node_t* link = (node_t*) malloc(sizeof(node_t));
 
@@ -30,12 +38,20 @@ void addNode(node_t** head, int data) {
     *head = link;
 }
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
 void addNodes(node_t** head, int data[], size_t data_count) {
     for (int i = 0; i < data_count; ++i) {
         addNode(head, data[i]);
     }
 }
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
 int deleteNode(node_t** head, int data) {
     node_t* current = *head;
 
@@ -69,6 +85,10 @@ int deleteNode(node_t** head, int data) {
     return -1;
 }
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
 node_t* getNthNode(node_t* head, int n) {
     node_t* current = head;
 
@@ -84,6 +104,10 @@ node_t* getNthNode(node_t* head, int n) {
     return current;
 }
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
 void freeLinkedList(node_t* head) {
     node_t* current = head;
 
