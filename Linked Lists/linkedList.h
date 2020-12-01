@@ -123,4 +123,22 @@ void freeLinkedList(node_t* head) {
     }
 }
 
+/**
+ * Time: O(n)
+ * Space: O(c)
+ */
+node_t* getTail(node_t** head) {
+    node_t* current = *head;
+
+    if (current == NULL) {
+        return NULL;
+    }
+
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    return current;
+}
+
 #endif

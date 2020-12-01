@@ -27,7 +27,7 @@ void deleteMiddleNode(node_t* n) {
 int main() {
     node_t* head = NULL;
     int data[] = {11,34,56,2,8,4};
-    int data_count = sizeof(data) / sizeof(int);
+    size_t data_count = sizeof(data) / sizeof(int);
 
     addNodes(&head, data, data_count);
     node_t* n = getNthNode(head, 4);
