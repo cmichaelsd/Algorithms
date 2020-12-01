@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include "linkedList.h"
 
-void swapNodes(node_t* nodeA, node_t* nodeB) {
-    int nodeAValue = nodeA->data;
-    nodeA->data = nodeB->data;
-    nodeB->data = nodeAValue;
-}
-
+/**
+ * Time: O(n)
+ * Space: O(n)
+ */
 void partition(node_t** head, int partition) {
     node_t* lt = NULL;
     node_t* gt = NULL;
