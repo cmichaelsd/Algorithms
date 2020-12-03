@@ -2,35 +2,87 @@
 #include "linkedList.h"
 
 /**
- * Time: O(m)
- * Space: O(m - n)
+ * Time: O(n) 
+ * Space: O(n)
+ * Returns a linked list which is the sum of headOne and headTwos nodes. 
  * 
- * m = length of longest list
- * n = length of shorter list
+ * @param node_t* headOne
+ * @param node_t* headTwo
+ * @return node_t*
+ */
+node_t* sumListsNewList(node_t* headOne, node_t* headTwo) {
+    if (headOne == NULL || headTwo == NULL) {
+        return NULL;
+    }
+
+    node_t* headOneCurrent = headOne;
+    node_t* headTwoCurrent = headTwo;
+    node_t* sumHead = (node_t*) malloc(sizeof(node_t));
+    node_t* sumCurrent = sumHead;
+    int carry = 0;
+
+    while ((headOneCurrent != NULL) || (headTwoCurrent != NULL)) {
+        node_t* n = (node_t*) malloc(sizeof(node_t));
+        int value = carry;
+        carry = 0;
+
+        if (headOneCurrent != NULL) {
+            value += headOneCurrent->data;
+            headOneCurrent = headOneCurrent->next;
+        }
+
+        if (headTwoCurrent != NULL) {
+            value += headTwoCurrent->data;
+            headTwoCurrent = headTwoCurrent->next;
+        }
+
+        if (value >= 10) {
+            carry = 1;
+            value -= 10;
+        }
+
+        sumCurrent->data = value;
+        sumCurrent->next = n;
+
+        sumCurrent = sumCurrent->next;
+    }
+
+    return sumHead;
+}
+
+/**
+ * Time: O(m) 
+ * Space: O(m - n) 
+ * Creates a linked list which is the sum of headOne and headTwos nodes. headOne 
+ * is used as the new summed linked list. 
+ * 
+ * m = length of longest list. 
+ * n = length of shorter list. 
  * 
  * If list m is 6 and list n is 3, I will in the worst case
  * scenario create 3 more nodes.
+ * 
+ * @param node_t* headOne
+ * @param node_t* headTwo
  */
 void sumLists(node_t* headOne, node_t* headTwo) {
+    if (headOne == NULL || headTwo == NULL) {
+        return;
+    }
+
     node_t* headOneCurrent = headOne;
     node_t* headTwoCurrent = headTwo;
     int carry = 0;
 
     /* If main list still has a node */
     while (headOneCurrent != NULL) {
-        /**
-         * Issue: If number is greater than or equal to 10 I need to
-         * getDecimal for number and set to current node. removeDecimal.
-         * getDecimal for number and add to next node if node exists. 
-         * Else set as data for new node and set node as next 
-         */
 
         int value = carry + headOneCurrent->data;
         carry = 0;
 
         /**
          * Since headTwoCurrent node exists add value to total.
-         * Update headTwoCurrent to enxt.
+         * Update headTwoCurrent to next.
          */
         if (headTwoCurrent != NULL) {
             value += headTwoCurrent->data;
@@ -45,7 +97,7 @@ void sumLists(node_t* headOne, node_t* headTwo) {
              * Value = 8
              */
             carry = 1;
-            value = value - 10;
+            value -= 10;
         }
 
         /**
@@ -86,8 +138,8 @@ int main() {
     node_t* headOne = NULL;
     node_t* headTwo = NULL;
 
-    int dataOne[] = {2,6,1,7,8};
-    int dataTwo[] = {2,9,5};
+    int dataOne[] = {6,1,7};
+    int dataTwo[] = {2,9,5,8};
 
     size_t dataOne_count = sizeof(dataOne) / sizeof(int);
     size_t dataTwo_count = sizeof(dataTwo) / sizeof(int);
@@ -100,7 +152,12 @@ int main() {
     printLinkedList(headTwo);
     printf("\n\n");
 
-    sumLists(headOne, headTwo);
+    node_t* sumHead = sumListsNewList(headOne, headTwo);
+    printf("\n\n");
+    printLinkedList(sumHead);
 
-    printLinkedList(headOne);
+    freeLinkedList(headOne);
+    freeLinkedList(headTwo);
+
+    return 0;
 }

@@ -9,8 +9,11 @@ typedef struct node {
 } node_t;
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Prints each linked list nodes data property. 
+ * 
+ * @param node_t* head
  */
 void printLinkedList(node_t* head) {
     node_t* ptr = head;
@@ -26,8 +29,12 @@ void printLinkedList(node_t* head) {
 }
 
 /**
- * Time: O(c)
- * Space: O(c)
+ * Time: O(c) 
+ * Space: O(c) 
+ * Pushes an integer into the linked list as a new node. 
+ * 
+ * @param node_t** head
+ * @param int data
  */
 void addNode(node_t** head, int data) {
     node_t* link = (node_t*) malloc(sizeof(node_t));
@@ -39,8 +46,13 @@ void addNode(node_t** head, int data) {
 }
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Pushes each integer in the data array into the linked list as a new node. 
+ * 
+ * @param node_t** head
+ * @param int[] data
+ * @param size_t data_count
  */
 void addNodes(node_t** head, int data[], size_t data_count) {
     for (int i = 0; i < data_count; ++i) {
@@ -49,8 +61,13 @@ void addNodes(node_t** head, int data[], size_t data_count) {
 }
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Removes the first node found in a linked list which has a data property equal to the data parameter. 
+ * 
+ * @param node_t** head
+ * @param int data
+ * @return int returns the data property of the node is found otherwise -1 is returned
  */
 int deleteNode(node_t** head, int data) {
     node_t* current = *head;
@@ -86,8 +103,13 @@ int deleteNode(node_t** head, int data) {
 }
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Returns the Nth node of a linked list. 
+ * 
+ * @param node_t* head
+ * @param int n
+ * @return node_t*
  */
 node_t* getNthNode(node_t* head, int n) {
     node_t* current = head;
@@ -105,8 +127,11 @@ node_t* getNthNode(node_t* head, int n) {
 }
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Iterates a linked list and frees the memory of each node. 
+ * 
+ * @param node_t* head
  */
 void freeLinkedList(node_t* head) {
     node_t* current = head;
@@ -124,8 +149,12 @@ void freeLinkedList(node_t* head) {
 }
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Returns the tail node of a linked list. 
+ * 
+ * @param node_t** head
+ * @return node_t*
  */
 node_t* getTail(node_t** head) {
     node_t* current = *head;

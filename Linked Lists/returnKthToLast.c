@@ -3,8 +3,13 @@
 
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Returns the Kth nodes data property in a linked list. 
+ * 
+ * @param node_t* head 
+ * @param int k 
+ * @return int returns the Kth nodes data property if found otherwise returns -1 
  */
 int returnKthToLastRunner(node_t* head, int k) {
     node_t* current = head;
@@ -28,8 +33,13 @@ int returnKthToLastRunner(node_t* head, int k) {
 }
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Returns the Kth nodes data property in a linked list. 
+ * 
+ * @param node_t* head 
+ * @param int k 
+ * @return int returns the Kth nodes data property if found otherwise returns 0 
  */
 int returnKthToLast(node_t* head, int k) {
     if (head == NULL || k < 1) {

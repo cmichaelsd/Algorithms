@@ -2,8 +2,13 @@
 #include "linkedList.h"
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Partitions the linked list into a left half which is lower in value than the partition 
+ * parameter and a right half which is greater than or equal to the partition parameter.  
+ * 
+ * @param node_t** head 
+ * @param int partition 
  */
 void partition(node_t** head, int partition) {
     node_t* lt = NULL;

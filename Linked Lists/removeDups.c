@@ -2,8 +2,11 @@
 #include "linkedList.h"
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Removes duplicate nodes from a linked list if another node shares a data property. 
+ * 
+ * @param node_t** head 
  */
 void removeDups(node_t** head) {
     int bitVector = 0;
@@ -30,8 +33,11 @@ void removeDups(node_t** head) {
 }
 
 /**
- * Time: O(n^2)
- * Space: O(c)
+ * Time: O(n^2) 
+ * Space: O(c) 
+ * Removes duplicate nodes from a linked list if another node shares a data property. 
+ * 
+ * @param node_t** head 
  */
 void removeDupsNoBuffer(node_t** head) {
     node_t* current = *head;
