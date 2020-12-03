@@ -41,13 +41,13 @@ node_t* sumListsNewList(node_t* headOne, node_t* headTwo) {
             value -= 10;
         }
 
-        sumCurrent->data = value;
+        n->data = value;
         sumCurrent->next = n;
 
         sumCurrent = sumCurrent->next;
     }
 
-    return sumHead;
+    return sumHead->next;
 }
 
 /**
@@ -148,16 +148,16 @@ int main() {
     addNodes(&headTwo, dataTwo, dataTwo_count);
 
     printLinkedList(headOne);
-    printf("\n\n");
+    printf("\n");
     printLinkedList(headTwo);
-    printf("\n\n");
+    printf("\n");
 
     node_t* sumHead = sumListsNewList(headOne, headTwo);
-    printf("\n\n");
+
     printLinkedList(sumHead);
 
     freeLinkedList(headOne);
     freeLinkedList(headTwo);
-
+    freeLinkedList(sumHead);
     return 0;
 }
