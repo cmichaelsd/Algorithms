@@ -39,7 +39,8 @@ void sumLists(node_t* headOne, node_t* headTwo) {
 
         if (value >= 10) {
             /**
-             * Max case 9 + 9 = 18
+             * Max case first round 9 + 9 = 18
+             * Max case second round 1 + 9 + 9 = 19
              * Carry = 1
              * Value = 8
              */
@@ -102,5 +103,4 @@ int main() {
     sumLists(headOne, headTwo);
 
     printLinkedList(headOne);
-    // printLinkedList(headTwo);
 }
