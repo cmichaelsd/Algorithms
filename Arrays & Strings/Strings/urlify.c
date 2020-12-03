@@ -2,9 +2,13 @@
 #include "helpers.h"
 
 /**
- * Time: O(n)
- * Space: O(c)
- * n = Length of string
+ * Time: O(n) 
+ * Space: O(c) 
+ * n = Length of string. 
+ * Replaces all space characters in a character array with %20. 
+ * 
+ * @param char[] s 
+ * @param size_t s_count 
  */
 void urlify(char s[], size_t s_count) {
     int spaces = char_count(s, s_count, ' ');
@@ -38,14 +42,13 @@ void urlify(char s[], size_t s_count) {
 }
 
 /**
- * Array      size  total   i
- * cat_tom__  7     9       6
- * cat_tom_m  7     8       5
- * cat_tomom  7     7       4
- * cat%20tom  7     6       3
- * cat%20tom  7     3       2 => From here on out [total-1] == i, characters overwrite themselves
- * cat%20tom  7     2       1
- * cat%20tom  7     1       0
+ * Write a method to replace all spaces in a string with '%20'. You may assume that 
+ * the string has sufficient space at the end to hold the additional characters, and 
+ * that you are given the "true" length of the string. (Note: If implementing in Java, 
+ * please use a character array so that you can perform this operation in place.)
+ * EXAMPLE
+ * Input:  "Mr John Smith    ", 13
+ * Output: "Mr%20John%20Smith"
  */
 int main() {
     char s[] = "Mr John Smith    ";

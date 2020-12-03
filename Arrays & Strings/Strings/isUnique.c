@@ -2,8 +2,13 @@
 #include <string.h>
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Returns 1 if the character pointer contains all unique characters 
+ * otherwise 0 is returned. 
+ * 
+ * @param char* s
+ * @return int returns 1 if all characters are unique otherwise returns 0. 
  */
 int isUnqiue(char* s) {
     int bitVector = 0;

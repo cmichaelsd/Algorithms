@@ -3,14 +3,17 @@
 #include <stdlib.h>
 
 /**
- * Time: O(n)
- * Space: O(m + n)
+ * Time: O(n) 
+ * Space: O(m + n) 
+ * n = Length of shortest string. 
+ * m = Length of longest string. 
+ * Returns 1 if character array s1 is one modification away from character array s2. 
  * 
- * n = Length of shortest string
- * m = Length of longest string
- * 
- * Decided to implement the best solution from Cracking The Coding Interview
- * after coming up with a less optimal but more readable solution.
+ * @param char[] s1 
+ * @param size_t s1_count 
+ * @param char[] s2 
+ * @param size_t s2_count 
+ * @return int returns 1 if character arrays are one modification apart otherwise returns 0. 
  */
 int oneAway(char s1[], size_t s1_count, char s2[], size_t s2_count) {
     /**

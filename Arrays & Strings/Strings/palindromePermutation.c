@@ -3,42 +3,53 @@
 /**
  * Time: O(c)
  * Space: O(c)
+ * Returns 1 if bitVector parameter contains only one index which is toggled as 1 otherwise 0 is returned. 
  * 
- * This function is to find if our series of bits only contain a single one.
- * Theres a trick for this lets say I have 8
- * 0000 1000 -> 8 (2^3)
- * 0000 0111 -> 7 (2^2 + 2^1 + 2^0) or (4 + 2 + 1) subtract our current bit vector by 1
- * 
- * The values of the binary numbers aren't important, just pretend its an array of ones and zeros (which could be seen as a number if you really wanted to)
- * 
- *   0000 1000
- *  &0000 0111
- *  ----------
- *   0000 0000  Pass case
- * 
- *   0000 1001 (9)
- *  &0000 1000 (8)
- *  ----------
- *   0000 1000 Fail case
+ * @param int bitVector 
+ * @return int returns 1 if only one ndex of bitVector is 1 otherwise 0 is returned. 
  */
 int checkExactlyOneBitSet(int bitVector) {
+    /**
+     * This function is to find if our series of bits only contain a single one.
+     * Theres a trick for this lets say I have 8
+     * 0000 1000 -> 8 (2^3)
+     * 0000 0111 -> 7 (2^2 + 2^1 + 2^0) or (4 + 2 + 1) subtract our current bit vector by 1
+     * 
+     * The values of the binary numbers aren't important, just pretend its an array of ones and zeros (which could be seen as a number if you really wanted to)
+     * 
+     *   0000 1000
+     *  &0000 0111
+     *  ----------
+     *   0000 0000  Pass case
+     * 
+     *   0000 1001 (9)
+     *  &0000 1000 (8)
+     *  ----------
+     *   0000 1000 Fail case
+     */
     return (bitVector & (bitVector - 1)) == 0;
 }
 
 /**
  * Time: O(c)
  * Space: O(c)
+ * Toggles on and off the index given from the index parameter within the bitVector parameter. 
  * 
- * This may seem confusing but with a little study it becomes very clear. If you are confused read the first few chapters of 
- * Code: The Hidden Language of Computer Hardware and Software by Charles Petzold
- * This problem if based on a concept in electrical engineering - logic gates - and therefore computer programing.
- * 
- * For a fake example I will pretend the character code for 'a' is 3, the bit vector will then look like this 0000 1000
- * 
- * Least significant digit (right) to most significant digit (left) can be thought of as an array which is zero indexed
- * this is why the fourth from the left is now a one.
+ * @param int bitVector 
+ * @param int index 
+ * @return int bit vector 
  */
 int toggle(int bitVector, int index) {
+    /**
+     * This may seem confusing but with a little study it becomes very clear. If you are confused read the first few chapters of 
+     * Code: The Hidden Language of Computer Hardware and Software by Charles Petzold
+     * This problem if based on a concept in electrical engineering - logic gates - and therefore computer programing.
+     * 
+     * For a fake example I will pretend the character code for 'a' is 3, the bit vector will then look like this 0000 1000
+     * 
+     * Least significant digit (right) to most significant digit (left) can be thought of as an array which is zero indexed
+     * this is why the fourth from the left is now a one.
+     */
     if (index < 0) return bitVector;
 
     /**
@@ -80,13 +91,19 @@ int toggle(int bitVector, int index) {
 /**
  * Time: O(n)
  * Space: O(n)
- * 
  * n = length of the string
+ * Creates a bit vector where each character in the character array toggles its ASCII code index 
+ * in the bit vector on and off. 
  * 
- * This will create a bit vector which is just a way of saying a series of ones and zeros
- * The idea is to send a 1 to the index in this number which is the character code
+ * @param char[] s 
+ * @param size_t s_count 
+ * @return int bit vector 
  */
 int createBitVector(char s[], size_t s_count) {
+    /**
+     * This will create a bit vector which is just a way of saying a series of ones and zeros
+     * The idea is to send a 1 to the index in this number which is the character code
+     */
     int bitVector = 0;
 
     for (int i = 0; i < s_count; ++i) {

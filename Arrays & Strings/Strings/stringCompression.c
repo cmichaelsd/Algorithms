@@ -4,29 +4,38 @@
 #include "helpers.h"
 
 /**
- * Time: O(n + k^2)
- * Space: O(c)
+ * Time: O(n + k^2) 
+ * Space: O(c) 
+ * n = Length of input string. 
+ * k = number of character sequences. 
+ * Returns a character pointer which is a lossless compression of the original character array. 
  * 
- * Application: This string compression technique could be used to compress a bitmap. If you
- * have an image of a sky you could iterate through the raw data and compress repeated values as is
- * done with this string; the image would be a lossless format which is a smaller representation of the
- * original file.
- * 
- * n = Length of input string
- * k = number of character sequences
- * 
- * The same number of operations occur for each element in the input string.
- * 
- * Could have issues with the result string in a case where to compressed string is larger
- * than original string.
- * 
- * abcdefghi
- * a1b1c1d1e1f1g1h1i1
- * 
- * Worst case new string can be twice as large as original. This is handled by checking if 
- * the current length of the result is larger than input string.
+ * @param char[] s 
+ * @param size_t s_count 
+ * @param char* result
+ * @return char*
  */
 char* stringCompression(char s[], size_t s_count, char* result) {
+    /**
+     * Application: This string compression technique could be used to compress a bitmap. If you
+     * have an image of a sky you could iterate through the raw data and compress repeated values as is
+     * done with this string; the image would be a lossless format which is a smaller representation of the
+     * original file.
+     * 
+     * n = Length of input string
+     * k = number of character sequences
+     * 
+     * The same number of operations occur for each element in the input string.
+     * 
+     * Could have issues with the result string in a case where to compressed string is larger
+     * than original string.
+     * 
+     * abcdefghi
+     * a1b1c1d1e1f1g1h1i1
+     * 
+     * Worst case new string can be twice as large as original. This is handled by checking if 
+     * the current length of the result is larger than input string.
+     */
     if (s_count < 4) {
         /**
          * The ideal case "aaa\0" could become "a2\0"

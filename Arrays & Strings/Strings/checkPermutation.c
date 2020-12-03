@@ -2,17 +2,22 @@
 #include "helpers.h"
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * Returns 1 if the character array s1 is a permutation of the character array s2. 
  * 
- * Very similar to isUnique 
- * 
- * Build a poor mans Hash Table for all ASCII values at the character code
- * Increment the count at the character codes index in the Hash Table for string one
- * Decrement the count at the character codes index in the Hash Table for string two
- * If at the end of this process the Hash Table has 0 for very index the strings are permutations of each other
+ * @param char[] s1 
+ * @param char[] s2 
+ * @param size_t size 
+ * @return int returns 1 if is permutation otherwise returns 0. 
  */
 int checkPermutation(char s1[], char s2[], size_t size) {
+    /**
+     * Build a poor mans Hash Table for all ASCII values at the character code
+     * Increment the count at the character codes index in the Hash Table for string one
+     * Decrement the count at the character codes index in the Hash Table for string two
+     * If at the end of this process the Hash Table has 0 for very index the strings are permutations of each other
+     */
     int arr[ASCII_CHAR_EXTENDED];
     fill(arr, ASCII_CHAR_EXTENDED, 0);
 

@@ -2,8 +2,13 @@
 #include "helpers.h"
 
 /**
- * Time: O(n)
- * Space: O(c)
+ * Time: O(n) 
+ * Space: O(c) 
+ * Sets every index within a row of an MxN matrix to 0. 
+ * 
+ * @param int[][] matrix 
+ * @param int row 
+ * @param size_t n_count 
  */
 void removeRow(int matrix[MATRIX_M][MATRIX_N], int row, size_t n_count) {
     for (int i = 0; i < n_count; ++i) {
@@ -12,8 +17,13 @@ void removeRow(int matrix[MATRIX_M][MATRIX_N], int row, size_t n_count) {
 }
 
 /**
- * Time: O(m)
- * Space: O(c)
+ * Time: O(m) 
+ * Space: O(c) 
+ * Sets every index within a column of an MxN matrix to 0. 
+ * 
+ * @param int[][] matrix 
+ * @param int row 
+ * @param size_t m_count 
  */
 void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, size_t m_count) {
     for (int i = 0; i < m_count; ++i) {
@@ -22,10 +32,14 @@ void removeColumn(int matrix[MATRIX_M][MATRIX_N], int column, size_t m_count) {
 }
 
 /**
- * Time: O(m * n)
- * Space: O(c)
+ * Time: O(m * n) 
+ * Space: O(c) 
+ * Replaces the every index within a row and column of an MxN matrix to 0 from a specific index 
+ * if a zero exists within that index. 
  * 
- * I previously used a bit vector solution but it was O(n) space.
+ * @param int[][] matrix 
+ * @param size_t m_count 
+ * @param size_t n_count 
  */
 void zeroMatrix(int matrix[MATRIX_M][MATRIX_N], size_t m_count, size_t n_count) {
     int rowHasZero= 0;

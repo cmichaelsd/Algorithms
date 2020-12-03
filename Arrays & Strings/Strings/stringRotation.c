@@ -3,10 +3,16 @@
 #include "helpers.h"
 
 /**
- * Time: O(n)
- * Space: O(n)
+ * Time: O(n) 
+ * Space: O(n) 
+ * n = s1_count 
+ * Returns 1 if character array s1 is a rotation of character array s2 otherwise 0 is returned. 
  * 
- * n = s1_count
+ * @param char[] s1
+ * @param char[] s2 
+ * @param size_t s1_count 
+ * @param size_t s2_count 
+ * @return int returns 1 if character array is a rotation otherwise 0 is returned. 
  */
 int stringRotation(char s1[], char s2[], size_t s1_count, size_t s2_count) {
     /* If strings are different lengths, return 0. */

@@ -2,10 +2,13 @@
 #include "helpers.h"
 
 /**
- * Time: O(n^2)
- * Space: O(n)
+ * Time: O(n^2) 
+ * Space: O(n) 
+ * n = Number of elements.
+ * Rotates entire NxN matrix 90 degrees. 
  * 
- * n = Number of elements
+ * @param int[][] matrix 
+ * @param size_t n_count
  */
 void rotateMatrix(int matrix[MATRIX_N][MATRIX_N], size_t n_count) {
     for (int layer = 0; layer < (n_count / 2); ++layer) {
