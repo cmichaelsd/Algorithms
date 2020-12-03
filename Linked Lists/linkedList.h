@@ -40,7 +40,7 @@ void addNode(node_t** head, int data) {
 
 /**
  * Time: O(n)
- * Space: O(c)
+ * Space: O(n)
  */
 void addNodes(node_t** head, int data[], size_t data_count) {
     for (int i = 0; i < data_count; ++i) {
