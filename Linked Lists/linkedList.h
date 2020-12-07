@@ -170,4 +170,28 @@ node_t* getTail(node_t** head) {
     return current;
 }
 
+/**
+ * Time: O(n) 
+ * Space: O(c) 
+ * Returns the length of a linked list. 
+ * 
+ * @param node_t* head
+ * @return int 
+ */
+int getLength(node_t* head) {
+    if (head == NULL) {
+        return 0;
+    }
+
+    node_t* current = head;
+    int length = 0;
+
+    while (current != NULL) {
+        ++length;
+        current = current->next;
+    }
+
+    return length;
+}
+
 #endif

@@ -2,8 +2,11 @@
 #include "linkedList.h"
 
 /**
- * Time: O(c)
- * Space: O(c)
+ * Time: O(c) 
+ * Space: O(c) 
+ * Removes node between head and tail of a linked list. 
+ * 
+ * @param node_t* n 
  */
 void deleteMiddleNode(node_t* n) {
     if (n == NULL || n->next == NULL) {
