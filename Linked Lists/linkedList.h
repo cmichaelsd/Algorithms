@@ -194,4 +194,31 @@ int getLength(node_t* head) {
     return length;
 }
 
+/**
+ * Time: O(n) 
+ * Space: O(c) 
+ * Reverses a linked list, given a double pointer head reference. 
+ * 
+ * @param node_t** head
+ */
+void reverse(node_t** head) {
+    if (head == NULL) {
+        return;
+    }
+
+    node_t* current = *head;
+    node_t* previous = NULL;
+
+    while (current != NULL) {
+        node_t* n = current->next;
+
+        current->next = previous;
+
+        previous = current;
+        current = n;
+    }
+    
+    *head = previous;
+}
+
 #endif
