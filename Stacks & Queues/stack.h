@@ -21,8 +21,8 @@ int pop(node_t** top) {
 		return -1;
 	}
 
-	int temp = *top->data;
-	*top = *top->next;
+	int temp = (*top)->data;
+	*top = (*top)->next;
 
 	return temp;
 }
@@ -40,7 +40,10 @@ void push(node_t** top, int data) {
 
 	nTop->data = data;
 
-	*top->next = nTop;
+	if ((*top) != NULL) {
+		(*top)->next = nTop;
+	}
+
 	*top = nTop;
 }
 
